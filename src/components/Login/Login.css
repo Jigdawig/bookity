@@ -1,0 +1,10 @@
+.login-container {
+    background-color: cornsilk;
+
+    display: grid;
+    box-sizing: border-box;
+    margin: auto;
+    width: fit-content;
+
+    padding: 10px; 
+}

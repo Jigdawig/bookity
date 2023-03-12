@@ -1,0 +1,22 @@
+{
+    "admin": {
+        "username": "admin",
+        "firstName": "Admin",
+        "lastName": "User",
+        "favoriteColor": "Purple",
+        "dateOfBirth": "2023-03-11",
+        "themePreference": "dark",
+        "password": "iÜgÌcgèw/d1",
+        "loginAttempts": 0
+    },
+    "test": {
+        "username": "test",
+        "firstName": "Test",
+        "lastName": "User",
+        "favoriteColor": "Yellow",
+        "dateOfBirth": "2023-03-11",
+        "themePreference": "light",
+        "password": "iÜgÌcgèw/d1",
+        "loginAttempts": 0
+    }
+}
