@@ -1,7 +1,6 @@
-import './Books.css'
 import React from "react";
 import Book from "./Book";
-import noCoverImg from "../../images/no-cover.jpg";
+import noCoverImg from "../images/no-cover.jpg";
 
 export const Books = ({ books }) => {
   const title =
@@ -13,7 +12,7 @@ export const Books = ({ books }) => {
       ...book,
       id: book.id.replace("/works/", ""),
       coverImg: book.coverId
-        ? `https://covers.openlibrary.org/b/id/${book.coverId}-M.jpg`
+        ? `https://covers.openlibrary.org/b/id/${book.coverId}-L.jpg`
         : noCoverImg,
     };
   });

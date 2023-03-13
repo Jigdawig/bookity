@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
 import { LoginContext } from '../App';
 import { SearchBar } from '../components/SearchBar';
-import { Books } from '../components/Book/Books';
+import { Books } from '../components/Books';
 import { searchBooks } from '../utils/BooksApi';
 
 const Dashboard = () => {
@@ -23,8 +23,6 @@ const Dashboard = () => {
     }
   };
 
-  
-
   const fetchBooks = async(param) => {
     setLoading(true);
 
@@ -41,17 +39,8 @@ const Dashboard = () => {
 
   // Load API data
   useEffect(() => {
-    fetchBooks('Stormlight Archive')  
+    fetchBooks('The Lord of the rings')  
     }, []);
-  
-    // useEffect(() => {
-    //   if (books.length > 0) setLoading(true);
-    // }, [books]);
-  
-    // // Transform data for rendering
-    // useEffect(() => {
-    //   if (loading) {}
-    // }, [loading]);
 
     useEffect(() => {
       if (!loggedIn) {
@@ -61,6 +50,7 @@ const Dashboard = () => {
   return (
     <>
       <SearchBar handleSearch={handleSearch} />
+      <hr />
       { loading && <Spinner /> }
       { !loading && books.length > 0 && <Books books={books}/> }
     </>

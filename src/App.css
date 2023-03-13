@@ -51,3 +51,33 @@ body .light-mode {
 .justify-content-end {
 	right: 55px;
 }
+
+.search-form{
+    width: 100%;
+}
+.search-form-content{
+    padding: 1.4rem 2.8rem;
+    border-radius: 3.8rem;
+}
+.search-form-content .form-control{
+    font-size: 2rem;
+    padding: 0.6rem;
+}
+.search-form-content .form-control::placeholder{
+    opacity: 0.9;
+}
+
+.dark-mode .books-section {
+    background-color: darkslategray;
+    color: white;
+}
+
+.light-mode .books-section {
+    background-color: #7ab6b8;
+    color: black;
+}
+
+.books-section {
+    padding: 1.5rem 0;
+    border-radius: 12px;
+}
