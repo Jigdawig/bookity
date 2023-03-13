@@ -6,9 +6,9 @@ import { Books } from "../components/Books";
 import { searchBooks } from "../utils/BooksApi";
 
 const Dashboard = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(null);
   const [books, setBooks] = useState([]);
-  const [searchTitle, setSearchTitle] = useState("");
+  const searchTitle = books.length > 0 ? "Search Result(s):" : "No matching books found";
 
   const handleSearch = (_searchText) => {
     let searchText = _searchText.replace(/[^\w\s]/g, "").trim();
@@ -17,13 +17,8 @@ const Dashboard = () => {
     if (searchText.length === 0) {
       console.log("Empty Search!");
       setBooks([]);
-      setSearchTitle("No matching books found");
     } else {
       fetchBooks(searchText);
-
-      setSearchTitle(
-        books.length > 0 ? "Search Result(s):" : "No matching books found"
-      );
     }
   };
 
@@ -49,7 +44,7 @@ const Dashboard = () => {
       <br />
       <SearchBar handleSearch={handleSearch} />
       <br />
-      {!loading && <h3 className="search-title">{searchTitle}</h3>}
+      {loading === false && <h3 className="search-title">{searchTitle}</h3>}
       {loading && <Spinner className="loading-spinner" />}
       {!loading && books.length > 0 && <Books books={books} />}
     </RequireLogin>

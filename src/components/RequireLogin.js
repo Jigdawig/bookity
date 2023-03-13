@@ -7,7 +7,6 @@ export const RequireLogin = ({ children }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log('Take me away!:', loggedIn);
     if (!loggedIn) {
       navigate("/login");
     }
