@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { ThemeContext } from "../App";
+import { ThemeContext, UserContext } from "../App";
 import { updateUser } from "../utils/userApi";
 import { RequireLogin } from "../components/RequireLogin";
 
 function Settings() {
   const [themeContext, setThemeContext] = useContext(ThemeContext);
+  const [userContext, setUserContext] = useContext(UserContext);
 
   const [firstName, setFirstName] = useState(localStorage?.firstName);
   const [lastName, setLastName] = useState(localStorage?.lastName);
@@ -53,6 +54,7 @@ function Settings() {
     );
 
     setPendingChanges(false);
+    setUserContext(`${localStorage?.firstName} ${localStorage?.lastName}`)
   };
 
   return (

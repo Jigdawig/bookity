@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Button, Form, Modal, Toast } from "react-bootstrap";
+import { Button, Form, Modal } from "react-bootstrap";
 import { authenticateUser } from "../utils/userApi";
-import { LoginContext, ThemeContext } from "../App";
+import { LoginContext, ThemeContext, UserContext } from "../App";
 
 function Login() {
   const [userName, setUserName] = useState('');
@@ -10,6 +10,7 @@ function Login() {
   const [error, setError] = useState(null);
   const [loggedIn, setLoggedIn] = useContext(LoginContext);
   const [themeContext, setThemeContext] = useContext(ThemeContext);
+  const [userContext, setUserContext] = useContext(UserContext);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -38,8 +39,8 @@ function Login() {
     localStorage.setItem("favoriteColor", response.cacheData.favoriteColor);
 
     setThemeContext(response.cacheData.themePreference);
+    setUserContext(`${localStorage?.firstName} ${localStorage?.lastName}`)
 
-    // navigate(location?.state?.previousUrl ? location.state.previousUrl : "/");
     navigate(location?.state?.previousUrl ?? '/')
   };
 

@@ -1,15 +1,11 @@
 import { useContext } from "react";
-import {
-  Navbar,
-  Container,
-  NavDropdown,
-  Nav,
-} from "react-bootstrap";
+import { Navbar, Container, NavDropdown, Nav } from "react-bootstrap";
 import logo from "../images/bookity-logo.jpg";
-import { LoginContext } from "../App";
+import { LoginContext, UserContext } from "../App";
 
 function Header() {
   const [loggedIn, changeLoggedIn] = useContext(LoginContext);
+  const [userContext] = useContext(UserContext);
 
   return (
     <Navbar key="lg" bg="light" expand="lg" className="mb-3 navbar">
@@ -28,13 +24,15 @@ function Header() {
             <Navbar.Collapse className="justify-content-end">
               <Nav>
                 <NavDropdown
-                  title={localStorage?.firstName}
+                  title={userContext}
                   className="justify-content-end flex-grow-1 pe-3"
                   id="offcanvasNavbarDropdown-expand-lg"
                 >
                   <NavDropdown.Item href="/">Dashboard</NavDropdown.Item>
                   <NavDropdown.Item href="/settings">Settings</NavDropdown.Item>
-                  <NavDropdown.Item href="/password-change">Change Password</NavDropdown.Item>
+                  <NavDropdown.Item href="/password-change">
+                    Change Password
+                  </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item
                     href="/login"
