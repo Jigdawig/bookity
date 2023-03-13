@@ -1,22 +1,22 @@
 {
     "admin": {
-        "username": "admin",
+        "userName": "admin",
         "firstName": "Admin",
         "lastName": "User",
         "favoriteColor": "Purple",
         "dateOfBirth": "2023-03-11",
         "themePreference": "dark",
-        "password": "iÜgÌcgèw/d1",
+        "password": "/d1h3l",
         "loginAttempts": 0
     },
     "test": {
-        "username": "test",
+        "userName": "test",
         "firstName": "Test",
         "lastName": "User",
         "favoriteColor": "Yellow",
         "dateOfBirth": "2023-03-11",
         "themePreference": "light",
-        "password": "iÜgÌcgèw/d1",
+        "password": "/d1h3l",
         "loginAttempts": 0
     }
 }

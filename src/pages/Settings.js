@@ -1,21 +1,24 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
-import { LoginContext } from "../App";
+import { LoginContext, ThemeContext } from "../App";
 import { updateUser } from "../utils/userApi";
 
 function Settings() {
+  const [loggedIn] = useContext(LoginContext);
+  const [themeContext, setThemeContext] = useContext(ThemeContext);
+
   const [firstName, setFirstName] = useState(sessionStorage?.firstName);
   const [lastName, setLastName] = useState(sessionStorage?.lastName);
   const [dateOfBirth, setDateOfBirth] = useState(sessionStorage?.dateOfBirth);
+  const [pendingChanges, setPendingChanges] = useState(false);
   const [favoriteColor, setFavoriteColor] = useState(
     sessionStorage?.favoriteColor
   );
   const [themePreference, setThemePreference] = useState(
     sessionStorage?.themePreference
   );
-  const [pendingChanges, setPendingChanges] = useState(false);
-  const [loggedIn, _] = useContext(LoginContext);
+
   const navigate = useNavigate();
 
   const discardChanges = () => {
@@ -33,6 +36,7 @@ function Settings() {
       return;
     }
 
+
     const response = updateUser({
       userName: sessionStorage.id,
       firstName,
@@ -42,15 +46,15 @@ function Settings() {
       themePreference,
     });
 
-    // Update session data
-    sessionStorage.setItem("firstName", response.cacheData.firstName);
-    sessionStorage.setItem("lastName", response.cacheData.lastName);
-    sessionStorage.setItem("dateOfBirth", response.cacheData.dateOfBirth);
-    sessionStorage.setItem(
-      "themePreference",
-      response.cacheData.themePreference
-    );
-    sessionStorage.setItem("favoriteColor", response.cacheData.favoriteColor);
+     // Update session data
+     sessionStorage.setItem("firstName", response.cacheData.firstName);
+     sessionStorage.setItem("lastName", response.cacheData.lastName);
+     sessionStorage.setItem("dateOfBirth", response.cacheData.dateOfBirth);
+     sessionStorage.setItem("favoriteColor", response.cacheData.favoriteColor);
+     sessionStorage.setItem(
+       "themePreference",
+       response.cacheData.themePreference
+     );
 
     setPendingChanges(false);
   };
@@ -120,6 +124,7 @@ function Settings() {
             onChange={(e) => {
               setPendingChanges(true);
               setThemePreference(e.target.checked ? "dark" : "light");
+              setThemeContext(e.target.checked ? "dark" : "light");
             }}
           />
           <Button variant="primary" type="submit" onClick={update} disabled={!pendingChanges}>

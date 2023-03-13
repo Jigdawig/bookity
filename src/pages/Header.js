@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import {
   Navbar,
   Container,
@@ -10,19 +9,10 @@ import logo from "../images/bookity-logo.jpg";
 import { LoginContext } from "../App";
 
 function Header() {
-  const [loggedIn, setLoggedIn] = useContext(LoginContext);
-  const navigate = useNavigate();
-
-  const logout = () => {
-    setLoggedIn(false);
-    localStorage.clear();
-    sessionStorage.clear();
-
-	navigate('/');
-  };
+  const [loggedIn, changeLoggedIn] = useContext(LoginContext);
 
   return (
-    <Navbar key="lg" bg="light" expand="lg" className="mb-3">
+    <Navbar key="lg" bg="light" expand="lg" className="mb-3 navbar">
       <Container fluid>
         <Navbar.Brand href="/">
           <img src={logo} className="bookity-logo" alt="bookity logo" />
@@ -48,7 +38,7 @@ function Header() {
                   <NavDropdown.Divider />
                   <NavDropdown.Item
                     href="/login"
-                    onClick={logout}
+                    onClick={() => changeLoggedIn(false)}
                   >
                     Logout
                   </NavDropdown.Item>

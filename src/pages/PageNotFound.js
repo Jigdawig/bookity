@@ -15,7 +15,7 @@ function PageNotFound() {
   return (
     <>
       {loggedIn && (
-        <div style={{textAlign: "center"}}>
+        <div style={{textAlign: "center", backgroundImage: "url(/404.jpg)"}}>
           <h1>404</h1>
           <hr />
           <h2>Whoops!</h2>

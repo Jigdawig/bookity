@@ -10,7 +10,10 @@ function PasswordChange() {
   const navigate = useNavigate();
 
   const changePassword = () => {
-   updateUser({ password });
+   updateUser({
+    userName: sessionStorage?.id,
+    password
+});
   };
 
   useEffect(() => {

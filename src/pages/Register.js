@@ -4,9 +4,9 @@ import { Button, Form, Modal, Row, Col } from "react-bootstrap";
 import { createUser } from "../utils/userApi";
 
 function Register() {
-  const [username, setUsername] = useState('');
-  const [firstname, setFirstname] = useState('');
-  const [lastname, setLastname] = useState('');
+  const [userName, setUserName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [password, setPassword] = useState('');
   const [color, setColor] = useState('');
   const [dateOfBirth, setDateOfBirth] = useState('');
@@ -18,9 +18,9 @@ function Register() {
     // TO-DO some form validation
     e.preventDefault();
     let err = createUser({
-      firstname,
-      lastname,
-      username,
+      firstName,
+      lastName,
+      userName,
       password,
       dateOfBirth,
       favoriteColor: color,
@@ -49,7 +49,7 @@ function Register() {
               type="text"
               placeholder="Enter Username"
               onChange={(e) => {
-                setUsername(e.target.value);
+                setUserName(e.target.value);
               }}
             />
           </Form.Group>
@@ -61,7 +61,7 @@ function Register() {
                 type="test"
                 placeholder="First Name"
                 onChange={(e) => {
-                  setFirstname(e.target.value);
+                  setFirstName(e.target.value);
                 }}
               />
             </Form.Group>
@@ -72,7 +72,7 @@ function Register() {
                 type="text"
                 placeholder="Last Name"
                 onChange={(e) => {
-                  setLastname(e.target.value);
+                  setLastName(e.target.value);
                 }}
               />
             </Form.Group>

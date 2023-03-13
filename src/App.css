@@ -1,10 +1,39 @@
-body {
-    background-color: #f36b3a;
+body .dark-mode {
+    /* background-color: #f36b3a; */
+	background-color:#292626;
+	color: white
+}
+
+body .light-mode {
+    /* background-color: #f36b3a; */
+	background-color: cornsilk;
+	color: black
+}
+
+.navbar {
+	border-radius: 12px;
+}
+.main-container {
+	max-width: -webkit-fill-available;
+	height: 100vh;
+}
+
+.bookity-app {
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 10%;
+}
+
+.dark-mode .auth-container {
+	background-color: darkslategrey;
+}
+
+.light-mode .auth-container {
+	background-color: #7ab6b8;
 }
 
 .auth-container {
-    background-color: cornsilk;
-
     display: grid;
     box-sizing: border-box;
     margin: auto;
@@ -15,11 +44,10 @@ body {
 
 .bookity-logo {
     color: #333;
-    background-color: #333;
     height: 50px;
     width: 50px;
-  }
-  
-  .justify-content-end {
-    right: 55px;
-  }
+}
+
+.justify-content-end {
+	right: 55px;
+}

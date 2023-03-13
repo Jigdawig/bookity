@@ -1,7 +1,7 @@
 import userData from "./userData.json";
 
-export const authenticateUser = (username, password) => {
-  let currentUser = userData[username];
+export const authenticateUser = (userName, password) => {
+  let currentUser = userData[userName];
 
   if (!currentUser) {
     return { error: "User not found" };
@@ -23,7 +23,7 @@ export const authenticateUser = (username, password) => {
 
   return {
     cacheData: {
-      username: currentUser.username,
+      userName: currentUser.userName,
       firstName: currentUser.firstName,
       lastName: currentUser.lastName,
       dateOfBirth: currentUser.dateOfBirth,
@@ -35,7 +35,7 @@ export const authenticateUser = (username, password) => {
 
 export const createUser = (data) => {
   // TO-DO Some validation
-  userData[data.username] = {
+  userData[data.userName] = {
     ...data,
     password: superComplexHashFn(data.password),
     loginAttempts: 0,
@@ -59,7 +59,7 @@ export const updateUser = (data) => {
 
   return {
     cacheData: {
-      username: currentUser.username,
+      userName: currentUser.userName,
       firstName: currentUser.firstName,
       lastName: currentUser.lastName,
       dateOfBirth: currentUser.dateOfBirth,

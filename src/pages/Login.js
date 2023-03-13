@@ -2,20 +2,21 @@ import React, { useState, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button, Form, Modal } from "react-bootstrap";
 import { authenticateUser } from "../utils/userApi";
-import { LoginContext } from "../App";
+import { LoginContext, ThemeContext } from "../App";
 
 function Login() {
-  const [username, setUsername] = useState('');
+  const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
-  const [_, setLoggedIn] = useContext(LoginContext);
   const [error, setError] = useState(null);
+  const [loggedIn, setLoggedIn] = useContext(LoginContext);
+  const [themeContext, setThemeContext] = useContext(ThemeContext);
 
   const location = useLocation();
   const navigate = useNavigate();
 
   const signIn = (e) => {
     e.preventDefault();
-    let response = authenticateUser(username, password);
+    let response = authenticateUser(userName, password);
 
     if (response.error) {
       console.log('error logging in:', response.error)
@@ -23,16 +24,21 @@ function Login() {
 
       return;
     }
+    
+    sessionStorage.setItem("access", true);
+    sessionStorage.setItem("refresh", false);
+  
+    setLoggedIn(true);
 
-    sessionStorage.setItem("id", response.cacheData.username);
+    sessionStorage.setItem("id", response.cacheData.userName);
     sessionStorage.setItem("firstName", response.cacheData.firstName);
     sessionStorage.setItem("lastName", response.cacheData.lastName);
     sessionStorage.setItem("dateOfBirth", response.cacheData.dateOfBirth);
     sessionStorage.setItem("themePreference", response.cacheData.themePreference);
     sessionStorage.setItem("favoriteColor", response.cacheData.favoriteColor);
-    localStorage.setItem("access", true);
-    localStorage.setItem("refresh", false);
-    setLoggedIn(true);
+
+    setThemeContext(response.cacheData.themePreference);
+
     navigate(location?.state?.previousUrl ? location.state.previousUrl : "/");
   };
 
@@ -48,10 +54,10 @@ function Login() {
             <Form.Control
               type="text"
               placeholder="Enter Username"
-              value={username}
+              value={userName}
               required
               onChange={(e) => {
-                setUsername(e.target.value);
+                setUserName(e.target.value);
               }}
             />
           </Form.Group>
