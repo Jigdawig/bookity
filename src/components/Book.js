@@ -12,7 +12,7 @@ export const Book = ({ book }) => {
       style={{ width: "18rem" }}
     >
       <Card.Img
-        variant="side"
+        variant="top"
         src={book.coverImg}
         alt={`${book.title} cover`}
       />

@@ -9,17 +9,24 @@ import { searchBooks } from '../utils/BooksApi';
 const Dashboard = () => {
   const [loading, setLoading] = useState(false);
   const [books, setBooks] = useState([]);
+  const [searchTitle, setSearchTitle] = useState('');
   const [loggedIn, _] = useContext(LoginContext);
   const navigate = useNavigate();
 
   const handleSearch = (_searchText) => {
+    console.log('handling search:', _searchText)
     let searchText = _searchText.replace(/[^\w\s]/g, '').trim();
 
     // Ignore search with no alphanumeric characters
     if(searchText.length === 0) {
       console.log('Empty Search!');
+      setSearchTitle('No matching books found');
     } else {
       fetchBooks(searchText);
+
+      setSearchTitle(books.length > 0
+        ? 'Here\'s what we found'
+        : 'No matching books found');
     }
   };
 
@@ -29,6 +36,7 @@ const Dashboard = () => {
     try {
       const data = await searchBooks(param);
       console.log('data:', data);
+
       setBooks(data)
       setLoading(false);
     } catch(err) {
@@ -39,7 +47,7 @@ const Dashboard = () => {
 
   // Load API data
   useEffect(() => {
-    fetchBooks('The Lord of the rings')  
+    fetchBooks('the lord of the rings')  
     }, []);
 
     useEffect(() => {
@@ -50,9 +58,9 @@ const Dashboard = () => {
   return (
     <>
       <SearchBar handleSearch={handleSearch} />
-      <hr />
+      <br />
       { loading && <Spinner /> }
-      { !loading && books.length > 0 && <Books books={books}/> }
+      { !loading && books.length > 0 && <Books books={books} title={searchTitle}/> }
     </>
   );
 }

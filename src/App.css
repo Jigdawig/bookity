@@ -19,10 +19,7 @@ body .light-mode {
 }
 
 .bookity-app {
-    width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 .dark-mode .auth-container {
@@ -81,3 +78,9 @@ body .light-mode {
     padding: 1.5rem 0;
     border-radius: 12px;
 }
+
+/* .books-content{
+	grid-template-columns: repeat(2, 1fr);
+	padding: 0.5rem;
+	gap: 3rem;
+} */

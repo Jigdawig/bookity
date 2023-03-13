@@ -1,12 +1,9 @@
 import React from "react";
+import { Carousel } from "react-bootstrap";
 import Book from "./Book";
 import noCoverImg from "../images/no-cover.jpg";
 
-export const Books = ({ books }) => {
-  const title =
-    books.length > 1
-      ? "Found a few books that match your search"
-      : "Found a book that matches your search";
+export const Books = ({ books, title }) => {
   const booksWithCovers = books.map((book) => {
     return {
       ...book,
@@ -24,9 +21,14 @@ export const Books = ({ books }) => {
           <h2>{title}</h2>
         </div>
         <div className="books-content grid">
-          {booksWithCovers.slice(0, 5).map((book, index) => {
+        {booksWithCovers.slice(0, 5).map((book, index) => {
             return <Book key={index} book={book} />;
           })}
+        {/* <Carousel>
+          {booksWithCovers.slice(0, 5).map((book, index) => {
+            return <Carousel.Item><Book key={index} book={book} /></Carousel.Item>;
+          })}
+            </Carousel> */}
         </div>
       </div>
     </section>
