@@ -4,18 +4,22 @@ import { Button, Form, Modal, Row, Col } from "react-bootstrap";
 import { createUser } from "../utils/userApi";
 
 function Register() {
-  const [userName, setUserName] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [password, setPassword] = useState('');
-  const [color, setColor] = useState('');
-  const [dateOfBirth, setDateOfBirth] = useState('');
+  const [userName, setUserName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [password, setPassword] = useState("");
+  const [color, setColor] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
 
+  const formValid = () => {
+    // Not doing any special input sanitization. Just checking if fields are all filled in
+    return !!userName && !!firstName && !!lastName && !!password && !!dateOfBirth && !!color;
+  }
+
   const signUp = (e) => {
-    // TO-DO some form validation
     e.preventDefault();
     let err = createUser({
       firstName,
@@ -27,14 +31,13 @@ function Register() {
     });
 
     if (err) {
-		console.log('error registering:', err)
-      	setError(err);
+      console.log("error registering:", err);
+      setError(err);
 
-		return;
+      return;
     }
 
-    // TO-DO put up a toast
-    navigate('/login');
+    navigate("/login");
   };
   return (
     <div
@@ -42,6 +45,7 @@ function Register() {
       style={{ display: "block", position: "initial" }}
     >
       <Modal.Body>
+      <div className="error-banner" hidden={!error}>{error}</div>
         <Form>
           <Form.Group className="mb-3" controlId="formBasicUsername">
             <Form.Label>Username</Form.Label>
@@ -109,14 +113,10 @@ function Register() {
                 setPassword(e.target.value);
               }}
             />
-            <Form.Text id="passwordHelpBlock" muted>
-              Your password must be 8-20 characters long, contain letters and
-              numbers, and must not contain spaces.
-            </Form.Text>
           </Form.Group>
 
           <div className="d-grid gap-2">
-            <Button variant="primary" type="submit" onClick={signUp}>
+            <Button variant="primary" type="submit" disabled={!formValid()} onClick={signUp}>
               Create Account
             </Button>
           </div>

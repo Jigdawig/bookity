@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Button, Form, Modal } from "react-bootstrap";
+import { Button, Form, Modal, Toast } from "react-bootstrap";
 import { authenticateUser } from "../utils/userApi";
 import { LoginContext, ThemeContext } from "../App";
 
@@ -25,17 +25,17 @@ function Login() {
       return;
     }
     
-    sessionStorage.setItem("access", true);
+    localStorage.setItem("access", true);
     sessionStorage.setItem("refresh", false);
   
     setLoggedIn(true);
 
-    sessionStorage.setItem("id", response.cacheData.userName);
-    sessionStorage.setItem("firstName", response.cacheData.firstName);
-    sessionStorage.setItem("lastName", response.cacheData.lastName);
-    sessionStorage.setItem("dateOfBirth", response.cacheData.dateOfBirth);
-    sessionStorage.setItem("themePreference", response.cacheData.themePreference);
-    sessionStorage.setItem("favoriteColor", response.cacheData.favoriteColor);
+    localStorage.setItem("id", response.cacheData.userName);
+    localStorage.setItem("firstName", response.cacheData.firstName);
+    localStorage.setItem("lastName", response.cacheData.lastName);
+    localStorage.setItem("dateOfBirth", response.cacheData.dateOfBirth);
+    localStorage.setItem("themePreference", response.cacheData.themePreference);
+    localStorage.setItem("favoriteColor", response.cacheData.favoriteColor);
 
     setThemeContext(response.cacheData.themePreference);
 
@@ -49,6 +49,7 @@ function Login() {
       style={{ display: "block", position: "initial" }}
     >
       <Modal.Body>
+      <div className="error-banner" hidden={!error}>{error}</div>
         <Form>
           <Form.Group className="mb-3" controlId="formBasicUsername">
             <Form.Label>Username</Form.Label>
@@ -87,7 +88,6 @@ function Login() {
             Don't have an account? <a href="/register"> Create one here</a>
           </Form.Text>
         </Form>
-        <div className="login-error-banner" hidden={!error}></div>
       </Modal.Body>
     </div>
   );

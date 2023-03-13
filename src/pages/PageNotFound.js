@@ -1,21 +1,14 @@
-import React, { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { LoginContext } from "../App";
+import React from "react";
 import { RequireLogin } from "../components/RequireLogin";
 
 function PageNotFound() {
-  const [loggedIn, _] = useContext(LoginContext);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!loggedIn) {
-      navigate("/login");
-    }
-  }, [loggedIn]);
-
   return (
     <RequireLogin>
-      <div style={{ textAlign: "center", backgroundImage: "url(/404.jpg)" }}>
+      <div
+        style={{
+          textAlign: "center",
+        }}
+      >
         <h1>404</h1>
         <hr />
         <h2>Whoops!</h2>

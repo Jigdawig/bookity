@@ -1,13 +1,16 @@
 import userData from "./userData.json";
 
 export const authenticateUser = (userName, password) => {
+  if (userName === "" || password === "") {
+    return { error: "Please enter username and password" };
+  }
   let currentUser = userData[userName];
 
   if (!currentUser) {
     return { error: "User not found" };
   }
 
-  if (currentUser.failedAttempts > 5) {
+  if (currentUser.loginAttempts > 5) {
     return { error: "Account Locked" };
   }
 
@@ -34,7 +37,6 @@ export const authenticateUser = (userName, password) => {
 };
 
 export const createUser = (data) => {
-  // TO-DO Some validation
   userData[data.userName] = {
     ...data,
     password: superComplexHashFn(data.password),
@@ -44,7 +46,6 @@ export const createUser = (data) => {
 };
 
 export const updateUser = (data) => {
-  // TO-DO Some validation
   let currentUser = userData[data.userName];
 
   if (!currentUser) {

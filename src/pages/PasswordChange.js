@@ -8,7 +8,7 @@ function PasswordChange() {
 
   const changePassword = () => {
     updateUser({
-      userName: sessionStorage?.id,
+      userName: localStorage?.id,
       password,
     });
   };
@@ -25,10 +25,6 @@ function PasswordChange() {
               setPassword(e.target.value);
             }}
           />
-          <Form.Text id="passwordHelpBlock" muted>
-            Your password must be 8-20 characters long, contain letters and
-            numbers, and must not contain spaces.
-          </Form.Text>
         </Form.Group>
         <Button
           variant="primary"

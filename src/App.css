@@ -108,3 +108,8 @@ body .light-mode {
 	margin-left: 50%;
 	margin-top: 10%;
 }
+
+.error-banner {
+	background-color: lightcoral;
+	text-align: center;
+}

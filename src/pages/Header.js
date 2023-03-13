@@ -28,7 +28,7 @@ function Header() {
             <Navbar.Collapse className="justify-content-end">
               <Nav>
                 <NavDropdown
-                  title={sessionStorage?.id}
+                  title={localStorage?.firstName}
                   className="justify-content-end flex-grow-1 pe-3"
                   id="offcanvasNavbarDropdown-expand-lg"
                 >

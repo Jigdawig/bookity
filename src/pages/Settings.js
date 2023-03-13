@@ -7,23 +7,23 @@ import { RequireLogin } from "../components/RequireLogin";
 function Settings() {
   const [themeContext, setThemeContext] = useContext(ThemeContext);
 
-  const [firstName, setFirstName] = useState(sessionStorage?.firstName);
-  const [lastName, setLastName] = useState(sessionStorage?.lastName);
-  const [dateOfBirth, setDateOfBirth] = useState(sessionStorage?.dateOfBirth);
+  const [firstName, setFirstName] = useState(localStorage?.firstName);
+  const [lastName, setLastName] = useState(localStorage?.lastName);
+  const [dateOfBirth, setDateOfBirth] = useState(localStorage?.dateOfBirth);
   const [pendingChanges, setPendingChanges] = useState(false);
   const [favoriteColor, setFavoriteColor] = useState(
-    sessionStorage?.favoriteColor
+    localStorage?.favoriteColor
   );
   const [themePreference, setThemePreference] = useState(
-    sessionStorage?.themePreference
+    localStorage?.themePreference
   );
 
   const discardChanges = () => {
-    setFirstName(sessionStorage?.firstName);
-    setLastName(sessionStorage?.lastName);
-    setDateOfBirth(sessionStorage?.dateOfBirth);
-    setFavoriteColor(sessionStorage?.favoriteColor);
-    setThemePreference(sessionStorage?.themePreference);
+    setFirstName(localStorage?.firstName);
+    setLastName(localStorage?.lastName);
+    setDateOfBirth(localStorage?.dateOfBirth);
+    setFavoriteColor(localStorage?.favoriteColor);
+    setThemePreference(localStorage?.themePreference);
 
     setPendingChanges(false);
   };
@@ -34,7 +34,7 @@ function Settings() {
     }
 
     const response = updateUser({
-      userName: sessionStorage.id,
+      userName: localStorage.id,
       firstName,
       lastName,
       dateOfBirth,
@@ -43,11 +43,11 @@ function Settings() {
     });
 
     // Update session data
-    sessionStorage.setItem("firstName", response.cacheData.firstName);
-    sessionStorage.setItem("lastName", response.cacheData.lastName);
-    sessionStorage.setItem("dateOfBirth", response.cacheData.dateOfBirth);
-    sessionStorage.setItem("favoriteColor", response.cacheData.favoriteColor);
-    sessionStorage.setItem(
+    localStorage.setItem("firstName", response.cacheData.firstName);
+    localStorage.setItem("lastName", response.cacheData.lastName);
+    localStorage.setItem("dateOfBirth", response.cacheData.dateOfBirth);
+    localStorage.setItem("favoriteColor", response.cacheData.favoriteColor);
+    localStorage.setItem(
       "themePreference",
       response.cacheData.themePreference
     );
