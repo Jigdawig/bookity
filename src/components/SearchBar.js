@@ -1,14 +1,20 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
 import { FaSearch } from "react-icons/fa";
 import { Button, Form } from "react-bootstrap";
+import { ThemeContext } from "../App";
 
 export const SearchBar = ({ handleSearch }) => {
+  const [themeContext] = useContext(ThemeContext);
   const searchText = useRef("");
 
   return (
     <div className="search-form-container">
       <div className="search-container">
-        <div className="search-form-content flex flex-sb bg-white">
+        <div
+          className={`search-form-content flex flex-sb bg-${
+            themeContext === "light" ? "dark" : "light"
+          }`}
+        >
           <Form
             className="search-form d-flex"
             onSubmit={(e) => {

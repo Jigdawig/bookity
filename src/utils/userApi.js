@@ -46,7 +46,6 @@ export const createUser = (data) => {
 export const updateUser = (data) => {
   // TO-DO Some validation
   let currentUser = userData[data.userName];
-  console.log("updating:", currentUser, "with", data);
 
   if (!currentUser) {
     return {
@@ -55,7 +54,6 @@ export const updateUser = (data) => {
   }
 
   Object.assign(currentUser, data);
-  console.log("end result:", currentUser);
 
   return {
     cacheData: {

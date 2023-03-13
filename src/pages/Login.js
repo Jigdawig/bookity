@@ -39,7 +39,8 @@ function Login() {
 
     setThemeContext(response.cacheData.themePreference);
 
-    navigate(location?.state?.previousUrl ? location.state.previousUrl : "/");
+    // navigate(location?.state?.previousUrl ? location.state.previousUrl : "/");
+    navigate(location?.state?.previousUrl ?? '/')
   };
 
   return (

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoginContext } from "../App";
+import { RequireLogin } from "../components/RequireLogin";
 
 function PageNotFound() {
   const [loggedIn, _] = useContext(LoginContext);
@@ -13,19 +14,17 @@ function PageNotFound() {
   }, [loggedIn]);
 
   return (
-    <>
-      {loggedIn && (
-        <div style={{textAlign: "center", backgroundImage: "url(/404.jpg)"}}>
-          <h1>404</h1>
-          <hr />
-          <h2>Whoops!</h2>
-          <h4>
-            Looks like you've stumbled across a deep dark corner of Bookity.
-          </h4>
-          <h5>Turn around now for your own good.</h5>
-        </div>
-      )}
-    </>
+    <RequireLogin>
+      <div style={{ textAlign: "center", backgroundImage: "url(/404.jpg)" }}>
+        <h1>404</h1>
+        <hr />
+        <h2>Whoops!</h2>
+        <h4>
+          Looks like you've stumbled across a deep dark corner of Bookity.
+        </h4>
+        <h5>Turn around now for your own good.</h5>
+      </div>
+    </RequireLogin>
   );
 }
 

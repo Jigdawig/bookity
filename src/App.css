@@ -1,22 +1,23 @@
 body .dark-mode {
-	background-color:#292626;
+	background-color: #292626;
 	color: white
 }
 
 body .light-mode {
-	background-color: cornsilk;
+	background-color: navajowhite;
 	color: black
 }
 
 .navbar {
-	border-radius: 12px;
+	border-radius: 2px;
 }
+
 .main-container {
 	height: 100vh;
 }
 
 .bookity-app {
-    margin-top: 5%;
+	margin-top: 5%;
 }
 
 .dark-mode .auth-container {
@@ -28,59 +29,82 @@ body .light-mode {
 }
 
 .auth-container {
-    display: grid;
-    box-sizing: border-box;
-    margin: auto;
-    width: fit-content;
+	display: grid;
+	box-sizing: border-box;
+	margin: auto;
+	width: fit-content;
 
-    padding: 10px; 
+	padding: 10px;
+}
+
+.header-title {
+	text-align: center;
 }
 
 .bookity-logo {
-    color: #333;
-    height: 50px;
-    width: 50px;
+	color: #333;
+	height: 50px;
+	width: 50px;
 }
 
 .justify-content-end {
 	right: 55px;
 }
 
-.auth-container{
-    border-radius: 12px;
+.auth-container {
+	border-radius: 12px;
 }
 
-.form-container{
-    width: 70%;
+.form-container {
+	width: 70%;
 	margin-left: 15%;
 }
 
-.search-form-container{
-    width: 70%;
+.search-title {
+	margin-left: 6%;
+}
+
+.search-form-container {
+	width: 70%;
 	margin-left: 15%;
 }
-.search-form-content{
-    padding: 1.4rem 2.8rem;
-    border-radius: 3.8rem;
+
+.search-form-content {
+	padding: 1.4rem 2.8rem;
+	border-radius: 3.8rem;
 }
-.search-form-content .form-control{
-    font-size: 2rem;
-    padding: 0.6rem;
+
+.search-form-content .form-control {
+	font-size: 2rem;
+	padding: 0.6rem;
 }
-.search-form-content .form-control::placeholder{
-    opacity: 0.9;
+
+.search-form-content .form-control::placeholder {
+	opacity: 0.9;
 }
 
 .dark-mode .books-section {
-    background-color: darkslategray;
-    color: white;
+	background-color: #292626;
+	color: white;
 }
 
 .light-mode .books-section {
-    background-color: #7ab6b8;
-    color: black;
+	background-color: navajowhite;
+	color: black;
 }
 
 .books-section {
-    border-radius: 5px;
+	border-radius: 5px;
+	padding: 25px;
+}
+
+.books-content {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+
+.loading-spinner {
+	margin-left: 50%;
+	margin-top: 10%;
 }
