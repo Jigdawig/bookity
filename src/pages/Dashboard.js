@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { RequireLogin } from "../components/RequireLogin";
 import { SearchBar } from "../components/SearchBar";
@@ -40,11 +40,6 @@ const Dashboard = () => {
       setLoading(false);
     }
   };
-
-  // Load some arbitrary data
-  useEffect(() => {
-    fetchBooks("the lord of the rings");
-  }, []);
 
   return (
     <RequireLogin>
