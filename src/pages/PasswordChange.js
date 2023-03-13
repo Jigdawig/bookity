@@ -25,7 +25,7 @@ function PasswordChange() {
   return (
     <>
       {loggedIn && (
-        <Form>
+        <Form className="form-container">
           <Form.Group className="mb-3">
             <Form.Label>Enter New Password</Form.Label>
             <Form.Control

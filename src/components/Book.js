@@ -11,11 +11,7 @@ export const Book = ({ book }) => {
       text={themeContext === "light" ? "dark" : "white"}
       style={{ width: "18rem" }}
     >
-      <Card.Img
-        variant="top"
-        src={book.coverImg}
-        alt={`${book.title} cover`}
-      />
+      <Card.Img variant="top" src={book.coverImg} alt={`${book.title} cover`} />
       <Card.Body>
         <Card.Title>{book.title}</Card.Title>
         <Card.Text>

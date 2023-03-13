@@ -1,11 +1,9 @@
 body .dark-mode {
-    /* background-color: #f36b3a; */
 	background-color:#292626;
 	color: white
 }
 
 body .light-mode {
-    /* background-color: #f36b3a; */
 	background-color: cornsilk;
 	color: black
 }
@@ -14,7 +12,6 @@ body .light-mode {
 	border-radius: 12px;
 }
 .main-container {
-	max-width: -webkit-fill-available;
 	height: 100vh;
 }
 
@@ -49,8 +46,18 @@ body .light-mode {
 	right: 55px;
 }
 
-.search-form{
-    width: 100%;
+.auth-container{
+    border-radius: 12px;
+}
+
+.form-container{
+    width: 70%;
+	margin-left: 15%;
+}
+
+.search-form-container{
+    width: 70%;
+	margin-left: 15%;
 }
 .search-form-content{
     padding: 1.4rem 2.8rem;
@@ -75,12 +82,5 @@ body .light-mode {
 }
 
 .books-section {
-    padding: 1.5rem 0;
-    border-radius: 12px;
+    border-radius: 5px;
 }
-
-/* .books-content{
-	grid-template-columns: repeat(2, 1fr);
-	padding: 0.5rem;
-	gap: 3rem;
-} */

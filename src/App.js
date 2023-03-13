@@ -2,7 +2,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { createContext, useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { Container } from 'react-bootstrap';
 import Header from "./pages/Header";
 import Dashboard from "./pages/Dashboard";
 import Register from "./pages/Register";
@@ -38,7 +37,7 @@ function App() {
     setLoggedIn(value);
 
     if (value === false) {
-      // localStorage.clear();
+      localStorage.clear();
       sessionStorage.clear();
 
       navigate('/');
@@ -48,9 +47,9 @@ function App() {
   return (
     <LoginContext.Provider value={[loggedIn, changeLoggedIn]}>
     <ThemeContext.Provider value={[themeContext, setThemeContext]}>
-      <Container className={`${themeContext}-mode main-container`}>
+      <div className={`${themeContext}-mode main-container`}>
       <Header />
-      <Container className="bookity-app">
+      <div className="bookity-app">
         <Routes>
             <Route path="/" Component={Dashboard}/>
             <Route path="/login" Component={Login} />
@@ -59,8 +58,8 @@ function App() {
             <Route path="/password-change" Component={PasswordChange} />
             <Route path="*" Component={PageNotFound} />
         </Routes>
-      </Container>
-      </Container>
+      </div>
+      </div>
     </ThemeContext.Provider>
     </LoginContext.Provider>
   );
